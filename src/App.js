@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Navbar from "./Componets/Navbar";
+import TextArea from "./Componets/TextArea";
+import Alert from "./Componets/Alert";
 
 function App() {
+  const [color, setColor] = useState("light");
+  const [alert, setAlert] = useState({
+    msg: null,
+    type: null,
+  });
+
+  const ShowAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
+  };
+
+  const handelmode = () => {
+    if (color === "light") {
+      setColor("dark");
+      document.body.style.backgroundColor = "#555b69";
+      ShowAlert("Dark Mode Has Been Enabled!", "success");
+      setTimeout(function () {
+        ShowAlert(null);
+      }, 2000);
+    } else {
+      setColor("light");
+      document.body.style.backgroundColor = "white";
+      ShowAlert("Light Mode Has Been Enabled!", "success");
+      setTimeout(function () {
+        ShowAlert(null);
+      }, 2000);
+    }
+  };
+
+  // const [mode, setMode] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar mode={handelmode} color={color} />
+      <div style={{ height: "60px" }}>
+        <Alert alert={alert} style={{ height: "60px" }} />
+      </div>
+      <TextArea color={color} ShowAlert={ShowAlert} />
     </div>
   );
 }
