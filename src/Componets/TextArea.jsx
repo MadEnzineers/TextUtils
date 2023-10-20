@@ -89,7 +89,10 @@ export default function TextArea(props) {
       <div className="container py-4">
         <div className="row">
           <div className="col-md-9">
-            <h2 className={`text-${props.color}`}>Enter Your Text Here </h2>
+            <h2 className={`text-${props.color}`}>
+              Try TextUtils - Word Counter, Character Counter, Remove Extra
+              space
+            </h2>
           </div>
           <div className="col-md-3">
             {copy ? (
@@ -157,15 +160,14 @@ export default function TextArea(props) {
 
         <div className={`py-3 text-${props.color}`}>
           <p>
-            <b>Word Count :</b>
-            {
-              text.split(/\s+/).filter((element) => {
-                return element.length !== 0;
-              }).length
-            }
-          </p>
-          <p>
-            <b>Characters Count</b> : {text.replace(/\s/g, "").length}
+            <b>
+              {
+                text.split(/\s+/).filter((element) => {
+                  return element.length !== 0;
+                }).length
+              }{" "}
+            </b>
+            Word and <b>{text.replace(/\s/g, "").length}</b> Characters
           </p>
           <p>
             <b>Space Count</b> :{text.split(" ").length - 1}

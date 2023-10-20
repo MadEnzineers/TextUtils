@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./Componets/Navbar";
 import TextArea from "./Componets/TextArea";
 import Alert from "./Componets/Alert";
+import Footer from "./Componets/Footer";
 
 function App() {
   const [color, setColor] = useState("light");
@@ -44,6 +45,7 @@ function App() {
         <Alert alert={alert} style={{ height: "60px" }} />
       </div>
       <TextArea color={color} ShowAlert={ShowAlert} />
+      <Footer mode={handelmode} color={color} />
     </div>
   );
 }
